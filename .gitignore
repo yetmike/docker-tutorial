@@ -1,6 +1,11 @@
 # Presentation
-presentation/
-!presentation/*.pdf
+presentation/node_modules/
+presentation/dist/
+presentation/.slidev/
+presentation/slides.md
+presentation/package.json
+presentation/package-lock.json
+presentation/mise.toml
 
 # Python
 flask-app/__pycache__/
