@@ -1,0 +1,18 @@
+[tools]
+rust = "stable"
+
+[tasks.dev]
+run = "cargo run"
+description = "Run Rust app locally (no Docker)"
+
+[tasks.build-docker]
+run = "docker build -t rust-app ."
+description = "Build the multi-stage Docker image"
+
+[tasks.run-docker]
+run = "docker run --rm -p 3000:3000 rust-app"
+description = "Run the Docker image (build first with mise run build-docker)"
+
+[tasks.image-size]
+run = "docker images rust-app"
+description = "Show final image size"

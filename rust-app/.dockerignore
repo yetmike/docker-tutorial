@@ -1,0 +1,5 @@
+# Keep the Rust build cache OUT of the Docker build context.
+# target/ can be several gigabytes — without this the COPY . . step is very slow.
+target/
+.git
+*.md

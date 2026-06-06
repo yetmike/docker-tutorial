@@ -1,0 +1,23 @@
+# Presentation
+presentation/
+!presentation/*.pdf
+
+# Python
+flask-app/__pycache__/
+flask-app/*.pyc
+flask-app/.venv/
+flask-app/venv/
+
+# Go
+go-app/go-app
+
+# Rust
+rust-app/target/
+
+# Docker volumes / local overrides
+**/.env
+**/.env.*
+
+# OS
+.DS_Store
+Thumbs.db

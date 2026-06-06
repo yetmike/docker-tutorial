@@ -1,0 +1,37 @@
+# go-app/compose.yaml
+#
+# Two services:
+#   app — our Go binary (built via multi-stage Dockerfile)
+#   db  — official Postgres image
+#
+# The Go app reaches Postgres using the hostname "db" (the service name).
+# DATABASE_URL passes the connection string with that hostname.
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - DATABASE_URL=postgres://postgres:secret@db:5432/app?sslmode=disable
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: app
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pg-data:

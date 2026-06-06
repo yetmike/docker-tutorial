@@ -1,0 +1,14 @@
+[tools]
+python = "3.12"
+
+[tasks.dev]
+run = "python app.py"
+description = "Run Flask app locally (no Docker)"
+
+[tasks.up]
+run = "docker compose up --build"
+description = "Build and start all services with Docker Compose"
+
+[tasks.down]
+run = "docker compose down"
+description = "Stop and remove containers"

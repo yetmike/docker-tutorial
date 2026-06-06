@@ -1,0 +1,18 @@
+[tools]
+go = "1.22"
+
+[tasks.dev]
+run = "go run ."
+description = "Run Go server locally (no Docker)"
+
+[tasks.up]
+run = "docker compose up --build"
+description = "Build (multi-stage) and start all services"
+
+[tasks.down]
+run = "docker compose down"
+description = "Stop and remove containers"
+
+[tasks.image-size]
+run = "docker images go-app-app"
+description = "Show the final image size (should be tiny!)"
